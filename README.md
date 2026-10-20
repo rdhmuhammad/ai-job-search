@@ -133,9 +133,10 @@ Postings are treated as untrusted input (the workflow follows no instructions em
 
 ## Other commands
 
-`/setup`, `/scrape`, and `/apply` form the core workflow. Ten more commands extend it once your profile is in place:
+`/setup`, `/scrape`, and `/apply` form the core workflow. Eleven more commands extend it once your profile is in place:
 
 - **`/interview`** preps you for a scheduled interview on a tracked application. It builds a stage-specific prep pack from the application's archive (the exact posting, the CV and cover letter the interviewer actually read, feedback recorded from earlier rounds), researches the company and interviewers with a verify-before-use rule, maps likely questions to your STAR examples, and offers a mock interview following the roleplay protocol in `07-interview-prep.md`. Gaps get honest bridge answers, never invented experience.
+- **`/html-interview`** generates a self-contained, interactive HTML web dashboard from interview preparation packs under `documents/applications/` — navigate questions by company, practice talking points, probe hints, STAR stories, reverse inquiries, and checklist mastered questions with browser-persisted progress and personal notes.
 - **`/outcome`** records what happened to an application - interview stages, offers, rejections, silence. It archives the submitted CV, cover letter, and posting text into `documents/applications/<company>_<role>/`, keeps `outcome.md` in the format `/setup` Path A parses, and updates the tracker. It also owns the stretch before there is an outcome to record: `/outcome followup` surfaces open applications that have gone quiet (default 10 days), drafts a short channel-appropriate follow-up in your writing style using only claims from the materials you already submitted (drafts only, never sends; at most twice per application), and offers a thank-you note in the same turn an interview stage is recorded. Once a few applications resolve, it points you back to `/setup` to calibrate the fit framework from what actually got interviews.
 - **`/notion-sync`** publishes a one-way, read-only view of the pipeline into a Notion database via the official Notion MCP server (OAuth, no API keys) - one row per ranked job plus every tracked application, with a write-once briefing page per row. The repo files stay the system of record: nothing syncs back, and documents sync as filenames only. Complements `/html-report`: that is the deep offline dashboard you regenerate at your desk; this is the glanceable live view from anywhere Notion runs (desktop, web, phone).
 - **`/gmail-sync`** reads your Gmail (via the Gmail connector) for status signals on your open applications - interview invites, assessment links, offers, rejections - and proposes them as a batch for you to approve before anything is written to the tracker or `outcome.md`, citing the source email on every proposed change. Offers stop short of proposing `hired`/`offer_declined` since that's your call; conflicting or unmatched signals get flagged for a manual `/outcome` pass instead of guessed.
@@ -165,6 +166,7 @@ ai-job-search/
 │   │   ├── gmail-sync.md              # /gmail-sync auto-detect application status from Gmail
 │   │   ├── interview.md               # /interview stage-specific prep pack + mock interview
 │   │   ├── html-report.md             # /html-report generate application tracker dashboard
+│   │   ├── html-interview.md          # /html-interview interactive interview questions checklist dashboard
 │   │   ├── notion-sync.md             # /notion-sync one-way pipeline view in a Notion database
 │   │   └── reset.md                   # /reset wipe profile data or documents folder
 │   ├── skills/
