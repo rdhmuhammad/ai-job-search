@@ -136,7 +136,7 @@ Postings are treated as untrusted input (the workflow follows no instructions em
 `/setup`, `/scrape`, and `/apply` form the core workflow. Eleven more commands extend it once your profile is in place:
 
 - **`/interview`** preps you for a scheduled interview on a tracked application. It builds a stage-specific prep pack from the application's archive (the exact posting, the CV and cover letter the interviewer actually read, feedback recorded from earlier rounds), researches the company and interviewers with a verify-before-use rule, maps likely questions to your STAR examples, and offers a mock interview following the roleplay protocol in `07-interview-prep.md`. Gaps get honest bridge answers, never invented experience.
-- **`/html-interview`** generates a self-contained, interactive HTML web dashboard from interview preparation packs under `documents/applications/` — navigate questions by company, practice talking points, probe hints, STAR stories, reverse inquiries, and checklist mastered questions with browser-persisted progress and personal notes.
+- <mark style="background-color: #fef08a; color: #000000;"><strong><code>/html-interview</code></strong> generates a self-contained, interactive HTML web dashboard from interview preparation packs under <code>documents/applications/</code> — navigate questions by company, practice talking points, probe hints, STAR stories, reverse inquiries, and checklist mastered questions with live sync to <code>reports/interview_progress.json</code>.</mark>
 - **`/outcome`** records what happened to an application - interview stages, offers, rejections, silence. It archives the submitted CV, cover letter, and posting text into `documents/applications/<company>_<role>/`, keeps `outcome.md` in the format `/setup` Path A parses, and updates the tracker. It also owns the stretch before there is an outcome to record: `/outcome followup` surfaces open applications that have gone quiet (default 10 days), drafts a short channel-appropriate follow-up in your writing style using only claims from the materials you already submitted (drafts only, never sends; at most twice per application), and offers a thank-you note in the same turn an interview stage is recorded. Once a few applications resolve, it points you back to `/setup` to calibrate the fit framework from what actually got interviews.
 - **`/notion-sync`** publishes a one-way, read-only view of the pipeline into a Notion database via the official Notion MCP server (OAuth, no API keys) - one row per ranked job plus every tracked application, with a write-once briefing page per row. The repo files stay the system of record: nothing syncs back, and documents sync as filenames only. Complements `/html-report`: that is the deep offline dashboard you regenerate at your desk; this is the glanceable live view from anywhere Notion runs (desktop, web, phone).
 - **`/gmail-sync`** reads your Gmail (via the Gmail connector) for status signals on your open applications - interview invites, assessment links, offers, rejections - and proposes them as a batch for you to approve before anything is written to the tracker or `outcome.md`, citing the source email on every proposed change. Offers stop short of proposing `hired`/`offer_declined` since that's your call; conflicting or unmatched signals get flagged for a manual `/outcome` pass instead of guessed.
@@ -166,7 +166,7 @@ ai-job-search/
 │   │   ├── gmail-sync.md              # /gmail-sync auto-detect application status from Gmail
 │   │   ├── interview.md               # /interview stage-specific prep pack + mock interview
 │   │   ├── html-report.md             # /html-report generate application tracker dashboard
-│   │   ├── html-interview.md          # /html-interview interactive interview questions checklist dashboard
+│   │   ├── <mark style="background-color: #fef08a; color: #000000;">html-interview.md          # /html-interview interactive interview questions checklist dashboard</mark>
 │   │   ├── notion-sync.md             # /notion-sync one-way pipeline view in a Notion database
 │   │   └── reset.md                   # /reset wipe profile data or documents folder
 │   ├── skills/
@@ -207,6 +207,8 @@ ai-job-search/
 ├── .github/workflows/ci.yml           # CI: LaTeX smoke compiles, skill lint, CLI typechecks
 ├── salary_lookup.py                   # Salary benchmarking tool (BYO data)
 ├── tools/
+│   ├── <mark style="background-color: #fef08a; color: #000000;">build_dashboard.py             # Generate application tracker HTML dashboard</mark>
+│   ├── <mark style="background-color: #fef08a; color: #000000;">build_interview_dashboard.py   # Generate interactive interview questions dashboard with JSON sync</mark>
 │   ├── check_framework_version.py     # CI check: framework_version bumped when skill files change
 │   ├── check_upstream_updates.py      # Preview which personalized files an upstream update touches
 │   ├── convert_salary_excel.py        # Convert salary Excel to JSON
@@ -224,6 +226,10 @@ ai-job-search/
 ├── gmail_sync/                        # /gmail-sync state (processed message IDs, last sync date)
 ├── upskill/                           # /upskill report output (markdown reports per run)
 ├── job_search_tracker.csv             # Application tracking spreadsheet
+├── <mark style="background-color: #fef08a; color: #000000;">reports/                           # Generated HTML dashboards & progress (personal output, gitignored)</mark>
+│   ├── <mark style="background-color: #fef08a; color: #000000;">application-dashboard.html     # Application tracker overview</mark>
+│   ├── <mark style="background-color: #fef08a; color: #000000;">interview-dashboard.html       # Interactive interview questions checklist web app</mark>
+│   └── <mark style="background-color: #fef08a; color: #000000;">interview_progress.json        # Saved question checklist marks and rehearsal notes</mark>
 └── SETUP.md                           # Detailed setup guide
 ```
 
@@ -249,6 +255,27 @@ All claims in the CV and cover letter are verified against your actual profile. 
 - **Relevance-weighted CV cutting.** When a CV overflows 2 pages, the workflow does not cut mechanically from the "oldest" section. It scores each candidate line by (a) relevance to the target posting, (b) uniqueness in the document, and (c) whether the cover letter depends on it, and cuts the lowest-total-score line first. An older-role bullet that hits posting keywords survives ahead of a recent-role bullet that does not.
 - **Drafter-reviewer separation.** The drafter writes; a second Claude agent, spawned with a fresh context, researches the company and critiques the drafts. The drafter then revises. This catches missed keywords, weak framing, and generic language that a single pass often leaves in.
 - **Token-efficient reviewer dispatch.** The reviewer agent receives drafts inline rather than re-reading them, and the verification checklist runs once at the end of the workflow rather than being duplicated by both agents. Note: the new compile-and-inspect step in Step 5 spends some of those savings on PDF rendering and layout iteration — the workflow trades some end-to-end token cost for a real reduction in broken PDFs reaching the user.
+
+## <mark style="background-color: #fef08a; color: #000000;">Interactive interview preparation (`/html-interview`)</mark>
+
+<mark style="background-color: #fef08a; color: #000000;">While <code>/interview</code> generates stage-specific prep packs in Markdown for individual tracked applications, <code>/html-interview</code> scans all interview preparation packs across <code>documents/applications/</code> and compiles them into a unified, interactive web dashboard at <code>reports/interview-dashboard.html</code>.</mark>
+
+### <mark style="background-color: #fef08a; color: #000000;">Key capabilities of the interview dashboard:</mark>
+
+- <mark style="background-color: #fef08a; color: #000000;"><strong>Multi-Company Navigation (Sidebar):</strong> Effortlessly switch between tracked companies (e.g. Binance, Bibit.id, Mekari, Traveloka) with application status pills (<code>Applied</code>, <code>Drafted</code>), target roles, and real-time per-company preparation progress meters.</mark>
+- <mark style="background-color: #fef08a; color: #000000;"><strong>Categorized Question Taxonomy:</strong> Automatically extracts and structures questions into high-priority technical & architectural queries, STAR behavioral stories (Situation, Task, Action, Result cards), tough & bridge questions, and reverse questions to ask the interviewer.</mark>
+- <mark style="background-color: #fef08a; color: #000000;"><strong>Interactive Checklist ("Checklist current question"):</strong> Each question card includes a custom checkbox to mark questions as Mastered with instant visual feedback, dynamic status badges, and animated progress bars.</mark>
+- <mark style="background-color: #fef08a; color: #000000;"><strong>Persistent JSON Storage:</strong> Checked question states and personal candidate rehearsal notes automatically persist to <code>reports/interview_progress.json</code>, preserving your rehearsal progress across browser sessions and re-generations.</mark>
+- <mark style="background-color: #fef08a; color: #000000;"><strong>Personal Delivery Notes:</strong> An auto-saving textarea on each question card to record delivery tips, STAR metrics, and mock rehearsal feedback directly into <code>reports/interview_progress.json</code>.</mark>
+- <mark style="background-color: #fef08a; color: #000000;"><strong>Live Server & Offline Sync:</strong> Run <code>python tools/build_interview_dashboard.py --serve</code> to launch a lightweight local server on <code>http://localhost:8765</code> with background auto-saving, or open the file offline with built-in File System Access API support.</mark>
+
+```bash
+# Compile the dashboard pre-seeded with existing JSON progress:
+python tools/build_interview_dashboard.py
+
+# Launch live local sync server (auto-saves checks and notes to reports/interview_progress.json):
+python tools/build_interview_dashboard.py --serve --open
+```
 
 ## Customization
 
