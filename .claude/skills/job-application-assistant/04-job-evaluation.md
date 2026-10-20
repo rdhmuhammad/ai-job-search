@@ -60,9 +60,9 @@ How well do the required/preferred skills align with the candidate's capabilitie
 | 40-59 | Partial match, significant upskilling needed |
 | 0-39 | Fundamental mismatch |
 
-**Strong match areas:** [YOUR_PRIMARY_SKILLS]
-**Moderate match areas:** [YOUR_SECONDARY_SKILLS]
-**Weak match areas:** [SKILLS_YOU_LACK]
+**Strong match areas:** Golang (Gin, GORM, concurrency, table-driven testing, `bbolt`), Java (Spring Boot, Spring Security, Jackson, Gradle/Maven), REST API & microservice/hexagonal architecture, Apache Kafka, RabbitMQ, PostgreSQL, MySQL, MongoDB, Redis, MinIO, Docker, Agentic AI workflows (LLMs, Model Context Protocol / MCP, RAG, Qdrant vector DB), WebSocket (STOMP & Socket.IO), MQTT (IoT), Keycloak / JWT Auth.
+**Moderate match areas:** Node.js, TypeScript, React 19, Vite, Electron, Redux Toolkit, TanStack Query, Playwright E2E testing, GraphQL, Grafana, Sentry, GCP, Linux VPS, Nginx, Cloudflare, Ansible, RTSP/FFmpeg, Computer Vision integration (Face Recognition, ANPR, OpenCV, TensorFlow).
+**Weak match areas:** Native mobile development (Swift/iOS, Kotlin/Android), .NET / C# / Rust / Ruby / PHP enterprise stacks, Kubernetes / Terraform / AWS-heavy platform administration, theoretical ML model research from scratch.
 
 ### 2. Experience Match (0-100)
 Does work history align with what they're looking for? Match on the function and nature of the work performed, not the literal job title - a "Data Consultant" and a "Data Scientist" role can be functionally identical.
@@ -74,9 +74,9 @@ Does work history align with what they're looking for? Match on the function and
 | 40-59 | Adjacent experience, would need to make the case |
 | 0-39 | Unrelated experience |
 
-**Strong:** [YOUR_DIRECT_EXPERIENCE_DOMAINS]
-**Moderate:** [YOUR_ADJACENT_EXPERIENCE]
-**Entry-level:** [ROLES_WITH_LIMITED_EXPERIENCE]
+**Strong:** Backend Engineer / Senior Backend Developer (Go or Java Spring Boot, ~4+ years experience), AI / LLM Backend Engineer (Agentic AI, MCP, RAG, Computer Vision backend integration), API & Developer Tooling Engineer.
+**Moderate:** Full-Stack / Product Engineer (Go/Java backend + React/TypeScript/Electron frontend), Solutions / Integration Engineer, Technical Mentor / Lead for backend teams.
+**Entry-level:** Pure DevOps / SRE / Cloud Infrastructure Engineer, Pure Data Scientist / ML Research Engineer, Frontend-only Engineer.
 
 ### 3. Behavioral/Culture Fit (0-100)
 Does the role and company culture match the behavioral profile?
@@ -91,9 +91,9 @@ Does the role and company culture match the behavioral profile?
 **Red flags to research:** Department disorganization, work dominated by maintenance over development, poor chemistry with leadership, culture mismatches. Check reviews, media coverage, LinkedIn connections, and network contacts for insider perspective.
 
 ### 4. Location & Logistics (Pass/Fail + Notes)
-- Within commute range: PASS
-- Remote with occasional office: PASS
-- Requires relocation: FAIL (deal-breaker)
+- Within commute range (Jakarta / Jabodetabek & West Java, or other Indonesian tech hubs like Bandung, Yogyakarta, Bali): PASS
+- Remote (Indonesia, APAC, or Global): PASS
+- Requires international relocation without visa sponsorship: FAIL (deal-breaker)
 - Frequent international travel: FLAG (discuss with user)
 
 ### 5. Career Alignment & Motivation (0-100)
@@ -107,19 +107,19 @@ Does this role advance career goals and contain tasks that energize?
 | 0-39 | Dead end or backwards step |
 
 **Career goals:**
-- [YOUR_CAREER_GOAL_1]
-- [YOUR_CAREER_GOAL_2]
-- [YOUR_CAREER_GOAL_3]
+- Advance as a Senior Backend Engineer or AI/LLM Backend Engineer building high-reliability, scalable systems in Golang and/or Java Spring Boot.
+- Build and integrate practical AI/LLM/MCP/RAG workflows and developer automation that eliminate repetitive toil and solve real business problems.
+- Contribute to end-to-end product architecture where engineering decisions directly connect to user value and operational efficiency.
 
 **Motivation filter:** Evaluate not just whether you *can* do the tasks, but whether the tasks will *energize* you. Consider:
-- Tasks that energize: [YOUR_ENERGIZING_TASKS]
-- Tasks that drain: [YOUR_DRAINING_TASKS]
+- Tasks that energize: Designing clean/hexagonal backend architectures, building high-throughput and zero-downtime services, integrating practical AI/LLM/MCP/RAG workflows, automating repetitive engineering tasks, and collaborating closely with product/users to solve real business challenges.
+- Tasks that drain: Toxic or unstructured 24/7 on-call firefighting without SLA discipline, purely manual repetitive work where automation is discouraged, and stagnant legacy maintenance with zero testing or architectural ownership.
 - Non-task factors: leadership style, department culture, company values, degree of autonomy
 
 **Life situation alignment:** Consider personal constraints:
-- **Security**: [YOUR_FINANCIAL_SITUATION_CONTEXT]
-- **Flexibility**: [YOUR_SCHEDULE_CONSTRAINTS]
-- **Professional development**: [YOUR_GROWTH_PRIORITIES]
+- **Security**: Currently employed full-time as Backend Developer at ASLIRI; selective for roles offering meaningful technical growth, strong engineering culture, or compensation uplift.
+- **Flexibility**: Open to Hybrid/On-site in Jakarta/Jabodetabek & Indonesian hubs or Remote (Indonesia/APAC/Global).
+- **Professional development**: High-scale distributed systems, applied AI/Agentic backend architecture (MCP, RAG), and senior technical ownership.
 
 ### 6. Salary Benchmark (Optional)
 

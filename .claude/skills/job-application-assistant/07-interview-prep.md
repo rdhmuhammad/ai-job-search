@@ -23,21 +23,69 @@ Keep answers to 1-2 minutes. Be specific. End with what you learned or would do 
 **R:** [OUTCOME - measurable results, adoption, impact]
 **Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
 
-### 2. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
-
-### 3. [PROJECT_NAME] ([SKILL_DEMONSTRATED])
-**S:** [CONTEXT]
-**T:** [YOUR RESPONSIBILITY]
-**A:** [WHAT YOU DID]
-**R:** [OUTCOME]
-**Use for:** "[QUESTION_TYPE_1]", "[QUESTION_TYPE_2]"
-
 <!-- Add more STAR examples as needed. Aim for 4-6 covering different competencies. -->
+
+## STAR Candidates (Complete Manually)
+
+### Agentic AI, MCP & Qdrant RAG Pipeline at ASLIRI
+**Source:** CV - Backend Developer, ASLIRI
+**What happened:** Engineered autonomous agentic workflows integrating Large Language Models (LLMs), Model Context Protocol (MCP), custom agent tools, and Retrieval-Augmented Generation (RAG) backed by Qdrant vector storage.
+**Why it matters:** AI/LLM engineering questions, integrating Gen-AI into production enterprise backends, vector search architecture.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### High-Reliability Public Security Systems & External Penetration Testing at ASLIRI
+**Source:** CV & Portfolio - Backend Developer, ASLIRI
+**What happened:** Built and maintained Java Spring Boot backend systems integrated with Facial Recognition (FR), ANPR, smart parking, and building access control via Kafka, RabbitMQ, MQTT, WebSocket, and RTSP/FFmpeg for government agencies under strict zero-downtime and external pen-testing requirements.
+**Why it matters:** High-availability system design, security compliance, IoT/hardware integration, working with mission-critical government stakeholders.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### Moladin Car Center Hexagonal Architecture & 90% Table-Driven Test Coverage
+**Source:** CV & Academy 2023 Portfolio - Backend Developer, Moladin
+**What happened:** Designed and built backend services in Go and Node.js using Hexagonal Architecture with Kafka/HTTP service integration and ~90% unit test coverage across repository, use-case, controller, and handler layers using table-driven tests.
+**Why it matters:** Clean/Hexagonal architecture decisions, testing discipline, scaling multi-branch transaction and anti-fraud workflows, on-call SLA ownership.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### API Tester: Non-Destructive Three-Way Collection Merge & Desktop Ecosystem
+**Source:** Independent Project (`apitester-go` & `apitester-java`)
+**What happened:** Built a Spring Boot starter (`apitester-generator-spring`) with RFC 6902 (`zjsonpatch`) Three-Way Merge and deterministic UUID seeding (`Controller#method`) plus an Electron/React 19/Go/BoltDB desktop client (`apitester-desktop`) with SHA-256 mutation history and Playwright cumulative test caching.
+**Why it matters:** Initiative & developer productivity, complex algorithmic problem solving (Flatten-Diff-Merge-Unflatten), full-stack system design.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### Concurrent ElevenLabs Voice Generation & Retry Pipeline in Go (Miragi)
+**Source:** CV - Side Project, Miragiapp.com
+**What happened:** Solved parallel multi-language ElevenLabs voice-generation bottlenecks using Go's concurrency primitives, structured logging, persistent failed-transaction storage, and an admin-aware retry mechanism.
+**Why it matters:** Concurrency in Go, resilient third-party API integration, fault tolerance and observability.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
+
+### Mentoring Corporate Engineers as BRI BFLP Backend Trainer
+**Source:** Certificate (`NMNTR29050005`) & Portfolio - dibimbing.id / BRI
+**What happened:** Led 30 hours of Golang backend training for Bank Rakyat Indonesia's BFLP bootcamp cohort, guiding final projects and evaluating technical performance.
+**Why it matters:** Technical communication, leadership, mentoring junior engineers, explaining backend architecture clearly.
+**S/T/A/R stub:**
+- Situation:
+- Task:
+- Action:
+- Result:
 
 ## Common Tough Questions
 

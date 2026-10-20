@@ -59,7 +59,7 @@ Expected output: `Output written on main_<company>_<role>.pdf (2 pages, ...)`. A
     linkcolor=blue,
     filecolor=magenta,
     urlcolor=blue,
-    pdftitle={[YOUR_NAME] - CV},
+    pdftitle={Ridho Muhammad - CV},
     % Keep pdfpagemode=UseNone: this block runs after moderncv's own
     % \AtEndPreamble (moderncv.cls sets pdfpagemode there), so a FullScreen
     % value here would win and open every CV in fullscreen presentation mode.
@@ -69,13 +69,13 @@ Expected output: `Output written on main_<company>_<role>.pdf (2 pages, ...)`. A
 \usepackage{import}
 
 % Personal data
-\name{[FIRST_NAME]}{[LAST_NAME]}
+\name{Ridho}{Muhammad}
 % If you have no address to list, DELETE this whole line. \address{}{}{} fails
 % with "There's no line here to end" on every moderncv version.
-\address{[YOUR_ADDRESS]}{}{}
-\phone[mobile]{[YOUR_PHONE]}
-\email{[YOUR_EMAIL]}
-\extrainfo{\href{[YOUR_LINKEDIN_URL]}{LinkedIn}, \href{[YOUR_GITHUB_URL]}{GitHub}}
+\address{Jakarta, Indonesia}{}{}
+\phone[mobile]{+62 821 8626 6734}
+\email{rdhmuhammad57@gmail.com}
+\extrainfo{\href{https://www.linkedin.com/in/ridhomuhammad57}{LinkedIn}, \href{https://github.com/rdhmuhammad}{GitHub}, \href{https://ridhoporto.my.id/}{Portfolio}, \href{https://medium.com/@5mblackburn7}{Medium}}
 
 \begin{document}
 \makecvtitle
@@ -137,11 +137,14 @@ When the role sits outside your home domain, **lead with the domain-transfer arg
 **Create 2-3 profile statement templates for your main role types:**
 
 <!-- SETUP: These are populated based on your background -->
-**For [YOUR_PRIMARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_1]
+**For Backend / Senior Backend Engineer (Golang & Java Spring Boot) roles:**
+> Backend Engineer with 4+ years of experience designing and operating high-traffic, near-zero-downtime systems in Golang (Gin, GORM, concurrency) and Java (Spring Boot, Spring Security). Proven track record delivering mission-critical government security platforms (Facial Recognition, ANPR, access control) at ASLIRI and Hexagonal Architecture services with 90\% table-driven unit test coverage at Moladin. Combines deep experience in event-driven messaging (Kafka, RabbitMQ), relational/NoSQL data stores (PostgreSQL, MySQL, MongoDB, Redis), and real-time protocols (MQTT, WebSocket, RTSP) with a strong focus on pragmatic system design and developer productivity.
 
-**For [YOUR_SECONDARY_ROLE_TYPE] roles:**
-> [YOUR_PROFILE_STATEMENT_TEMPLATE_2]
+**For AI / LLM Backend Engineer (Agentic AI, MCP & RAG) roles:**
+> Backend Engineer with 4+ years of production experience in Java Spring Boot and Golang, specializing in integrating applied AI products and autonomous agentic workflows into mission-critical systems. Experienced in architecting LLM pipelines with Model Context Protocol (MCP) servers, custom agent tools, and Retrieval-Augmented Generation (RAG) backed by Qdrant vector storage, alongside high-throughput Facial Recognition (FR), ANPR, and concurrent ElevenLabs voice-generation backends. Brings production-grade engineering discipline (90\% unit test coverage, Kafka/RabbitMQ event pipelines, external security certification) to turn AI capabilities into reliable, low-latency backend services.
+
+**For Full-Stack / Product & Developer Tooling Engineer roles:**
+> Product-minded Software Engineer with 4+ years of experience building end-to-end systems across Golang, Java Spring Boot, TypeScript, React 19, and Electron. Creator of API Tester (`apitester`), an open-source API documentation and testing ecosystem featuring a Spring Boot RFC 6902 three-way collection merge starter and a Go/BoltDB/Electron desktop client with Playwright E2E automation. Experienced in taking products from Focus Group Discussions and technical specifications to resilient production deployments for enterprise, healthcare, and logistics platforms.
 
 Statements labeled *[Used for: <company>_<role>]* were extracted from archived application drafts by `/setup` Path A. They are **phrasing references, never fact sources**: when drafting from one, every factual claim still comes from `01-candidate-profile.md` - a past tailored draft does not vouch for its own accuracy.
 
@@ -284,7 +287,7 @@ Extraction tries **pypdf** first (`pip install pypdf`, BSD license), then Popple
 What to check in the extraction:
 
 - **Contact details as literal text.** The stock template's fontawesome contact icons extract as glyph names (`MOBILE-ALT`, `Envelope`) - harmless noise, because the actual address and number are printed beside them. The failure mode is a contact detail carried *only* by an icon or a hyperlink (like the `LinkedIn` link text, whose URL is not in the text layer): invisible to an ATS. The email address must always appear as printed text.
-- **No garbled output.** `(cid:NNN)` markers or `�` characters mean a font is embedded without a Unicode mapping - an ATS sees the same garbage. This shows up with unusual fonts in custom templates, not with the stock moderncv setup under lualatex.
+- **No garbled output.** `(cid:NNN)` markers or `` characters mean a font is embedded without a Unicode mapping - an ATS sees the same garbage. This shows up with unusual fonts in custom templates, not with the stock moderncv setup under lualatex.
 - **Reading order.** The stock banking style is single-column, so extraction order matches visual order. Custom templates (via `/add-template`) with sidebars or multi-column layouts can interleave unrelated lines; if extraction order is scrambled, the user is trading ATS compatibility for looks and should be told.
 - **Keyword coverage.** Match the posting's required/preferred terms against the extracted text, in the posting's language. Prefer the posting's exact term over a synonym when it is truthfully applicable - ATS matching is often literal. Never add a keyword the profile does not support. `verify_pdf.py --contains` folds both sides for whitespace, Unicode normalization (NFC) and LaTeX's typographic substitutions before comparing - `'` reaches the text layer as U+2019 and `--` as U+2013, so `--contains "Master's degree"` and `--contains "2016-2024"` match what the template actually renders. The dumped `.txt` is never folded: it is the raw layer the ATS sees, which is why the date-range check below reads the dump, not `--contains`.
 - **Accents intact (pdflatex fallback).** Under pdflatex without T1 font encoding the text layer stores accented letters decomposed (`e` + combining grave instead of `è`); pypdf reads that as `Gen` `eve` with a stray spacing accent, and neither form matches a typed keyword. The stock template guards this with `\ifpdftex\usepackage[T1]{fontenc}\fi`; keep the line in tailored CVs and custom templates that may be compiled with pdflatex. It is a no-op under lualatex.
